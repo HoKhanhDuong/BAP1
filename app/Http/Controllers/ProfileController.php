@@ -40,29 +40,36 @@ class ProfileController extends Controller
         $user = DB::table('Users')
                     ->where('Users.id',$user_id)
                     ->first();
-        if(!empty($request->full_name)) $user->full_name = $request->full_name;
-        if(!empty($request->email)) $user->email = $request->email;
-        dd($request->avatar);
+//        if(!empty($request->full_name)) $user->full_name = $request->full_name;
+//        if(!empty($request->email)) $user->email = $request->email;
         if ($request->hasFile('avatar')) {
             $file = $request->file('avatar');
-            dd($file);
             $img = rand(0, 100000) . "_" . $file->getClientOriginalname();
             while (file_exists("upload/" . $img)) {
                 $img = rand(0, 100000) . "_" . $file->getClientOriginalname();
             }
-            $user->avatar = $img;
+//            $user->avatar = $img;
+            DB::table('Users')
+                ->where('Users.id',$user->id)
+                ->update([
+                    'full_name' => $request->full_name,
+                    'email' => $request->email,
+                    'avatar' => $img,
+                ]);
             $file->move('upload/', $img);
         }
-
-        DB::table('Users')
-            ->where('Users.id',$user->id)
-            ->update([
-                'full_name' => $user->full_name,
-                'email' => $user->email,
-                'avatar' => $user->avatar,
-            ]);
+        else {
+            DB::table('Users')
+                ->where('Users.id', $user->id)
+                ->update([
+                    'full_name' => $request->full_name,
+                    'email' => $request->email,
+                ]);
+        }
         $data = [];
-        $data['formation'] = $user;
+        $data['formation'] =  DB::table('Users')
+            ->where('Users.id',$user_id)
+            ->first();
         return view('profile', $data);
     }
 }

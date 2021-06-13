@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-sm bg-dark text-white">
     <div class="container">
       <a class="navbar-brand" href=" ">
-        <img src="./imgs/logo.png" height="30" alt="image">
+{{--        <img src="./imgs/logo.png" height="30" alt="image">--}}
+          <h3 style="font-family: cursive">BAP</h3>
       </a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav11" aria-controls="navbarNav11" aria-expanded="false" aria-label="Toggle navigation">
