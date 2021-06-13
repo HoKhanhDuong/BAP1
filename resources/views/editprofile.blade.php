@@ -5,7 +5,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
             <h1 class="h3 mb-0 text-gray-800">My profile</h1>
         </div>
-        <form action="{{route('user.update-profile')}}" method="POST">
+        <form action="{{route('user.update-profile')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-lg-4">
@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9 text-secondary">
-                                <button type="submit" class="btn btn-primary px-4" herf="{{route('user.update-profile')}}">Save changes</button>
+                                <button type="submit" class="btn btn-primary px-4">Save changes</button>
                             </div>
                         </div>
                     </div>

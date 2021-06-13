@@ -121,6 +121,7 @@
       height: 60px;
       clip-path: circle(30px at 50% 50%);
   }
+
 .avatar{
     width: 350px;
     height: 350px;
@@ -148,3 +149,4 @@ body{
 .me-2 {
   margin-right: .5rem!important;
 }
+
