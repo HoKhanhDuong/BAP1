@@ -17,7 +17,9 @@ class AdminController extends Controller
     }
 
     public function ListUser(){
-        $user = DB::table('Users')->paginate(10);
+        $user = DB::table('Users')
+                    ->where('type', 0)
+                    ->paginate(10);
         $data = [];
         $data['user'] = $user;
         return view('admin/admin_listuser',$data);
@@ -25,7 +27,10 @@ class AdminController extends Controller
 
     public function Delete(Request $request) {
         $delete = DB::table($request->type)
-                    ->where('id',$request->id)
+                    ->where([
+                        ['id',$request->id],
+                        ['type', 0]
+                        ])
                     ->delete();
         Session::flash('sussces', 'Deleted');
         if($request->type == "Books") redirect('/admin/admin_listbooks');

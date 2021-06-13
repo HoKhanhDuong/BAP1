@@ -67,7 +67,7 @@ class AuthController extends Controller
             switch ($user[0]->type) {
                 case 1:
                     # code...
-                    return redirect('admin/admin_listbooks');
+                    return redirect('admin/listbook');
                 case 0:
                     return redirect('/');
             }

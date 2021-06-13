@@ -17,7 +17,7 @@
             <a class="nav-link" href="{{route('adListBook')}}" >List book</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Log out</a>
+            <a class="nav-link" href="{{route('logout')}}">Log out</a>
           </li>
         </ul>
       </div>
