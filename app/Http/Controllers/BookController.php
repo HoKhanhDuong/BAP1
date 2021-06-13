@@ -17,10 +17,13 @@ class BookController extends Controller
         return view('home',$data);
     }
     public function getAddBook(){
+        $user = Session::get('users');
+        if(empty($user[0][0])) return back();
         return view('addbook');
     }
     public function postAddBook(Request $request){
         $user = Session::get('users');
+        if(empty($user[0][0])) return back();
         $user_id = $user[0][0]->id;
 
         $this->validate($request,
@@ -65,6 +68,7 @@ class BookController extends Controller
 
     public function Comment(Request $request, $id){
         $user = Session::get('users');
+        if(empty($user[0][0])) return back();
         $user_id = $user[0][0]->id;
         $comment = new Comments;
         $comment->user_id = $user_id;

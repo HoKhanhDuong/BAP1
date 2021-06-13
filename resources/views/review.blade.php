@@ -25,7 +25,7 @@
                     <input type="text" name="content" class="form-control" placeholder="Comment" required>
                 </div>
                 <div class="col">
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mb-2">Comment</button>
                 </div>
 
             </div>

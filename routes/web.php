@@ -29,6 +29,8 @@ Route::group(['prefix'=>'user'], function () {
     Route::post('/addbook', [BookController::class, 'postAddBook'])->name('user.postaddbook');
     Route::get('/reviewbook/{id}', [BookController::class, 'reviewBook'])->name('user.reviewBook');
     Route::post('/comment/{id}', [BookController::class, 'Comment'])->name('user.comment');
+    Route::get('/edit-profile', [ProfileController::class, 'editProfile'])->name('user.edit-profile');
+    Route::post('/edit-profile', [ProfileController::class, 'updateProfile'])->name('user.update-profile');
 });
 Route::group(['prefix'=>'admin'], function () {
     Route::get('/listbook', [AdminController::class, 'ListBook'])->name('adListBook')->middleware('admin');

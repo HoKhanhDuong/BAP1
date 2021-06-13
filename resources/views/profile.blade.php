@@ -38,7 +38,7 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="#">Edit</a>
+                      <a class="btn btn-info " href="{{route('user.edit-profile')}}">Edit</a>
                     </div>
                   </div>
                 </div>
