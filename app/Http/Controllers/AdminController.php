@@ -27,12 +27,10 @@ class AdminController extends Controller
 
     public function Delete(Request $request) {
         $delete = DB::table($request->type)
-                    ->where([
-                        ['id',$request->id]
-                        ])
+                    ->where('id',$request->id)
                     ->delete();
         Session::flash('sussces', 'Deleted');
-        if($request->type == "Books") redirect('/admin/admin_listbooks');
-        else redirect('admin/admin_listuser');
+        return redirect()->back();
+        
     }
 }
