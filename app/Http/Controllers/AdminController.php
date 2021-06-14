@@ -28,8 +28,7 @@ class AdminController extends Controller
     public function Delete(Request $request) {
         $delete = DB::table($request->type)
                     ->where([
-                        ['id',$request->id],
-                        ['type', 0]
+                        ['id',$request->id]
                         ])
                     ->delete();
         Session::flash('sussces', 'Deleted');
