@@ -23,7 +23,7 @@
                     <input type="hidden" name="id" value="{{$book->id}}" class="form-control" >
                 </div>
                 <div class="col-1">
-                    <button type="{{($book->user_id == Session::get('users')) ? 'submit' : 'hidden'}}" class="btn btn-primary mb-2">Edit</button>
+                    <button style="display: {{( !empty(Session::get('users')[0][0]) && ($book->user_id == Session::get('users')[0][0]->id)) ? 'block' : 'none'}}" type="submit" class="btn btn-primary mb-2">Edit</button>
                 </div>
 
             </div>
