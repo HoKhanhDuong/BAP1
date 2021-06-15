@@ -77,4 +77,40 @@ class BookController extends Controller
         $comment->save();
         return redirect()->back();
     }
+
+    public function getEditBook(Request $request){
+        $user = Session::get('users');
+        if(empty($user[0][0])) return back();
+        $data = [];
+        $book = DB::table('Books')
+            ->where('id','=',$request->id)
+            ->first();
+        $data['book'] = $book;
+        return view('editbook',$data);
+    }    
+
+    public function updateBook(Request $request) {
+        
+        $user = Session::get('users');
+        if(empty($user[0][0])) return back();
+        $user_id = $user[0][0]->id;
+        
+        $book = Books::where('id',$request->id)->get();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $img = rand(0, 100000) . "_" . $file->getClientOriginalname();
+            while (file_exists("upload/" . $img)) {
+                $img = rand(0, 100000) . "_" . $file->getClientOriginalname();
+            }
+            $book[0]->image = $img;
+            $file->move('upload/', $img);
+        }
+        $book[0]->name = $request->name;
+        $book[0]->content = $request->content;
+        $book[0]->user_id = $user_id;
+        $book[0]->tac_gia = $request->tac_gia;
+        $book[0]->rate = $request->rate;
+        $book[0]->save();
+        return redirect()->route('user.home');
+    }
 }

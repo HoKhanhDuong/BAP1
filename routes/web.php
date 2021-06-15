@@ -38,3 +38,5 @@ Route::group(['prefix'=>'admin'], function () {
     Route::post('/delete', [AdminController::class, 'Delete'])->name('delete')->middleware('admin');
 });
 
+Route::get('/book/edit', [BookController::class, 'getEditBook'])->name('edit-book');
+Route::post('/book/edit', [BookController::class, 'updateBook'])->name('update-book');

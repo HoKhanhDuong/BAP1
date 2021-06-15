@@ -62,7 +62,7 @@ class AuthController extends Controller
             ->get();
 
 
-        if ( Hash::check($request->password, $user[0]->password) ) {
+        if ( !empty($user[0]) && Hash::check($request->password, $user[0]->password) ) {
             Session::push('users', $user);
             switch ($user[0]->type) {
                 case 1:
